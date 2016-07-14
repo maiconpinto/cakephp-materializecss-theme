@@ -12,7 +12,7 @@
 </head>
 <body>
   
-  <?php echo $this->fetch('content); ?>
+  <?php echo $this->fetch('content'); ?>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
