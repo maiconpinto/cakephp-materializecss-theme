@@ -1,31 +1,35 @@
 <?php
-  $file = ROOT . DS . 'src' . DS . 'Template' . DS . 'Pages' . DS . 'home.ctp';
-  if (file_exists($file)) {
-    ob_start();
-    include_once $file;
-    echo ob_get_clean();
-} else {
+if (!$this->fetch('section-banner')) :
 ?>
-
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
     <div class="container">
       <br><br>
-      <h1 class="header center teal-text text-lighten-2">Parallax Template</h1>
+      <h1 class="header center teal-text text-lighten-2"><?php echo ($this->fetch('section-banner-title')) ? $this->fetch('section-banner-title') : 'Parallax Template'; ?></h1>
       <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        <h5 class="header col s12 light"><?php echo ($this->fetch('section-banner-subtitle')) ? $this->fetch('section-banner-subtitle') : 'A modern responsive front-end framework based on Material Design'; ?></h5>
       </div>
       <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+        <a href="<?php echo ($this->fetch('section-banner-button-link')) ? $this->fetch('section-banner-button-link') : 'http://materializecss.com/getting-started.html'; ?>" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">
+            <?php echo ($this->fetch('section-banner-button-text')) ? $this->fetch('section-banner-button-text') : 'http://materializecss.com/getting-started.html'; ?>
+        </a>
       </div>
       <br><br>
 
     </div>
   </div>
   <div class="parallax">
-    <?php echo $this->Html->image('background1.jpg', ['alt' => 'Unsplashed background img 1']); ?>
+    <?php
+    $image = ($this->fetch('section-banner-background-url')) ? $this->fetch('section-banner-background-url') : 'background1.jpg';
+    $alt = ($this->fetch('section-banner-background-alt')) ? $this->fetch('section-banner-background-alt') : 'Unsplashed background img 1';
+    ?>
+    <?php echo $this->Html->image($image, ['alt' => $alt]); ?>
   </div>
 </div>
+<?php
+else :
+echo $this->fetch('section-banner');
+endif;?>
 
 
 <div class="container">
@@ -104,6 +108,3 @@
   </div>
 </div>
 
-<?php
-}
-?>

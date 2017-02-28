@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <title>Parallax Template - Materialize</title>
+    <title><?php echo ($this->fetch('title')) ? $this->fetch('title') : 'Parallax Template - Materialize'; ?></title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,19 +12,43 @@
 </head>
 <body>
 
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-          <a id="logo-container" href="#" class="brand-logo">Logo</a>
-          <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
+    <?php
+    if (!$this->fetch('nav')) : ?>
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">
+                    <?php
+                    if (!$this->fetch('logo')) :
+                        echo 'logo';
+                    else :
+                        echo $this->fetch('logo');
+                    endif;
+                    ?>
+                </a>
+                <?php
+                if (!$this->fetch('menu')) :
+                    ?>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#">Navbar Link</a></li>
+                    </ul>
 
-        <ul id="nav-mobile" class="side-nav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-</nav>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="#">Navbar Link</a></li>
+                    </ul>
+
+                    <?php
+                else :
+                    echo $this->fetch('menu');
+                endif;
+                ?>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    <?php
+     else :
+        echo $this->fetch('nav');
+    endif;
+         ?>
 
 <?php echo $this->fetch('content'); ?>
 
