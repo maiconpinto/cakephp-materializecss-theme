@@ -13,20 +13,15 @@
 <body>
 
     <?php
-    if (!$this->fetch('nav')) : ?>
+    if (!$this->fetch('nav')) {
+        ?>
         <nav class="white" role="navigation">
             <div class="nav-wrapper container">
                 <a id="logo-container" href="#" class="brand-logo">
-                    <?php
-                    if (!$this->fetch('logo')) :
-                        echo 'logo';
-                    else :
-                        echo $this->fetch('logo');
-                    endif;
-                    ?>
+                    <?php echo ($this->fetch('logo')) ? $this->fetch('logo') : 'logo'; ?>
                 </a>
                 <?php
-                if (!$this->fetch('menu')) :
+                if (!$this->fetch('menu')) {
                     ?>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="#">Navbar Link</a></li>
@@ -35,58 +30,79 @@
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href="#">Navbar Link</a></li>
                     </ul>
-
                     <?php
-                else :
+                } else {
                     echo $this->fetch('menu');
-                endif;
+                }
                 ?>
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
         </nav>
-    <?php
-     else :
+        <?php
+     } else {
         echo $this->fetch('nav');
-    endif;
-         ?>
+     }
+     ?>
 
 <?php echo $this->fetch('content'); ?>
 
-<footer class="page-footer teal">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
+<?php
+if (!$this->fetch('footer')) {
+    ?>
+    <footer class="page-footer teal">
         <div class="container">
-            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text"><?php echo ($this->fetch('footer-bio-title')) ? $this->fetch('footer-bio-title') : 'Company Bio'; ?></h5>
+                    <p class="grey-text text-lighten-4"><?php echo ($this->fetch('footer-bio-description')) ? $this->fetch('footer-bio-description') : 'We are a team of college students working on this project like it\'s our full time job. Any amount would help support and continue development on this project and is greatly appreciated.'?></p>
+
+
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text"><?php echo ($this->fetch('footer-menu-one-title')) ? $this->fetch('footer-menu-one-title'): 'Settings'; ?></h5>
+                    <?php
+                    if (!$this->fetch('footer-menu-one')) {
+                        ?>
+                        <ul>
+                            <li><a class="white-text" href="#!">Link 1</a></li>
+                            <li><a class="white-text" href="#!">Link 2</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                        <?php
+                    } else {
+                        echo $this->fetch('footer-menu-one');
+                    }
+                    ?>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text"><?php echo ($this->fetch('footer-menu-two-title')) ? $this->fetch('footer-menu-two-title'): 'Connect'; ?></h5>
+                    <?php
+                    if (!$this->fetch('footer-menu-two')) {
+                        ?>
+                        <ul>
+                            <li><a class="white-text" href="#!">Link 1</a></li>
+                            <li><a class="white-text" href="#!">Link 2</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                        <?php
+                    } else {
+                        echo $this->fetch('footer-menu-two');
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
+    <?php
+}
+?>
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <?php echo $this->Html->script('materialize') ?>
