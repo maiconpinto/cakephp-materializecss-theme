@@ -11,7 +11,7 @@ if (!$this->fetch('section-banner')) :
       </div>
       <div class="row center">
         <a href="<?php echo ($this->fetch('section-banner-button-link')) ? $this->fetch('section-banner-button-link') : 'http://materializecss.com/getting-started.html'; ?>" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">
-            <?php echo ($this->fetch('section-banner-button-text')) ? $this->fetch('section-banner-button-text') : 'http://materializecss.com/getting-started.html'; ?>
+            <?php echo ($this->fetch('section-banner-button-text')) ? $this->fetch('section-banner-button-text') : 'Demo'; ?>
         </a>
       </div>
       <br><br>
