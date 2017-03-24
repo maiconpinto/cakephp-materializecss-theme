@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <?php echo $this->Html->css('MaterializeCSS.materialize', array('media' => 'screen,projection')) ?>
     <?php echo $this->Html->css('MaterializeCSS.style', array('media' => 'screen,projection')) ?>
+    <?php echo $this->fetch('css'); ?>
 </head>
 <body>
 
@@ -108,5 +109,8 @@ if (!$this->fetch('footer')) {
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <?php echo $this->Html->script('materialize') ?>
 <?php echo $this->Html->script('init') ?>
+
+<?php echo $this->fetch('script'); ?>
+<?php echo $this->fetch('scriptBottom'); ?>
 </body>
 </html>
